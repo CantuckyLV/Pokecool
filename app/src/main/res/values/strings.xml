@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">Pokecool</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="tmp_number">001</string>
+    <string name="tmp_name">Bulbasaur</string>
+    <string name="types_title">Types: </string>
+    <string name="height_title">Height: </string>
+    <string name="weight_title">Weight: </string>
+</resources>
