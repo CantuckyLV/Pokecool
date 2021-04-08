@@ -1,6 +1,7 @@
 package com.example.pokecool.Domain
 
 import android.util.Log
+import com.example.pokecool.Data.Api.PokeService
 import com.example.pokecool.Data.Response.PokemonListResponse
 import com.example.pokecool.Data.Response.PokemonResponse
 import com.example.pokecool.Data.Response.PokemonSimple
@@ -9,12 +10,15 @@ import io.reactivex.ObservableSource
 import io.reactivex.Single
 import io.reactivex.internal.operators.observable.ObservableFromIterable
 import io.reactivex.schedulers.Schedulers
+import javax.inject.Inject
+
 /**
  * Implementation of UseCase
  */
-class GetPokemonUseCaseImpl : GetPokemonUseCase {
+class GetPokemonUseCaseImpl @Inject constructor( private val pokeRepository: PokeRepository) : GetPokemonUseCase {
 
-    private val  pokeRepository = PokeRepositoryImpl()
+    //TODO DESCOMENTAR PARA DAGGERM
+    //private val  pokeRepository = PokeRepositoryImpl()
     /**
      * Invokes the getPokemon() method from Repository
      * @return Observable fro m repository

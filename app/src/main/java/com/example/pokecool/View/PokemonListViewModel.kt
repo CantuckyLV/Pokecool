@@ -7,22 +7,26 @@ import androidx.lifecycle.ViewModel
 import com.example.pokecool.Data.Response.PokemonListResponse
 import com.example.pokecool.Data.Response.PokemonResponse
 import com.example.pokecool.Data.Response.PokemonSimple
+import com.example.pokecool.Domain.GetPokemonUseCase
 import com.example.pokecool.Domain.GetPokemonUseCaseImpl
 import com.example.pokecool.Domain.Model.PokemonDetailed
 import com.example.pokecool.Domain.Model.PokemonSprite
+import com.example.pokecool.Domain.PokeRepository
 import io.reactivex.Observer
 import io.reactivex.SingleObserver
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.disposables.Disposable
 import io.reactivex.schedulers.Schedulers
+import javax.inject.Inject
 
 /**
  * ViewModel Class for main PokemonListFragment
  */
-class PokemonListViewModel  : ViewModel() {
+class PokemonListViewModel @Inject constructor(private val getPokemonUseCase: GetPokemonUseCase)  : ViewModel() {
     private val disposables = CompositeDisposable()
-    private val getPokemonUseCase = GetPokemonUseCaseImpl()
+    //TODO DESCOMENTAR PARA DAGGERM
+    //private val getPokemonUseCase = GetPokemonUseCaseImpl()
     val detailedPokemonList = ArrayList<PokemonDetailed>()
 
     val pokeSpriteList = MutableLiveData<List<PokemonSprite>>()
@@ -34,9 +38,9 @@ class PokemonListViewModel  : ViewModel() {
     @SuppressLint("CheckResult")
     fun getPokemon() {
         getPokemonUseCase.getPokemon()
-            .subscribeOn(Schedulers.io())
-            .observeOn(AndroidSchedulers.mainThread())
-            .subscribe(object : Observer<PokemonListResponse?> {
+                ?.subscribeOn(Schedulers.io())
+            ?.observeOn(AndroidSchedulers.mainThread())
+            ?.subscribe(object : Observer<PokemonListResponse?> {
                 override fun onSubscribe(d: Disposable) {
                     disposables.add(d)
                 }

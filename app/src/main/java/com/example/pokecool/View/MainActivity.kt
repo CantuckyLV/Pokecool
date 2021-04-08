@@ -6,12 +6,13 @@ import android.util.Log
 import android.widget.FrameLayout
 import androidx.fragment.app.FragmentTransaction
 import com.example.pokecool.R
+import dagger.android.support.DaggerAppCompatActivity
 
 /**
  * View Class for main activity
  */
 
-class MainActivity : AppCompatActivity() {
+class MainActivity : DaggerAppCompatActivity() {
     private lateinit var flPokemons : FrameLayout
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

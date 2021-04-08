@@ -16,17 +16,24 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.pokecool.Domain.Model.PokemonDetailed
 import com.example.pokecool.Domain.Model.PokemonSprite
+import com.example.pokecool.Domain.PokeRepository
 import com.example.pokecool.R
 import com.example.pokecool.View.Adapters.PokemonAdapter
+import dagger.android.support.DaggerFragment
 import java.io.Serializable
+import javax.inject.Inject
 
 /**
  * View Class for main PokemonListFragment
  */
-class PokemonListFragment  : Fragment() {
+class PokemonListFragment () : DaggerFragment() {
     /*@Inject
     lateinit var useCase: GetPokemonUseCase*/
-    private val viewModel : PokemonListViewModel by viewModels()
+    //private val viewModel : PokemonListViewModel by viewModels()
+    //TODO DESCOMENTAR PARA DAGGER
+    @Inject
+   lateinit var viewModel: PokemonListViewModel
+
     private lateinit var  rvPokes:RecyclerView
     private  lateinit var pokemonAdapter: PokemonAdapter
     private lateinit var  loadingView : RelativeLayout
